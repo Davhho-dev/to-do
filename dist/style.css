@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+}
+
+:root {
+    --main-ft: "Poppins";
+    --accent-ft: "Lora";
+    --main-clr: #2F3437;
+    --secondary-clr: #373C3F;
+    --font-clr: #EBEBEB;
+    --accent-clr: #0077b5;
+}
