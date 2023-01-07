@@ -4,13 +4,80 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Thingy To Do List</title>
+    <link rel="icon" type="image/svg+xml" href="./duck-svgrepo-com.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined">
 </head>
 <body>
-    
+    <div class="left-con">
+        <header class="left-hd">
+            <h2>Projects</h2>
+        </header>
+        <div class="project-con">
+            <div class="project-list">
+                <div class="new-project-con">
+                    <p class="project-title">Example</p>
+                    <div class="project-btn">
+                        <span class="material-icons-outlined edit">edit</span>
+                        <span class="material-icons-outlined delete">delete</span>
+                    </div>
+                </div>
+            </div>
+            <button class="add-project">
+                <span class="material-icons-outlined add-icon">add</span>
+                Add Project
+            </button>
+        </div>
+        <div class="completed-con">
+            <div class="completed-tab">
+                Completed
+                <span class="material-icons-outlined arrow-down">
+                    expand_more
+                </span>
+            </div>
+            <div class="completed-list">
+                <p>project</p>
+                <p>project</p>
+            </div>
+        </div>
+    </div>
+    <div class="right-con">
+        <header class="main-hd-con">
+            <div class="main-hd-left-con">
+                <h1 class="main-hd">Example Project</h1>
+                <p class="main-hd-desc">An Example Project</p>
+            </div>
+            <div class="main-hd-right-con">
+                <div class="main-hd-date">
+                    <p class="main-hd-date-title">Due Date: </p>
+                    <p class="main-hd-date-user">000000</p>
+                </div>
+                <div class="main-hd-priority">
+                    <p class="main-hd-priority-title">Priority: </p>
+                    <p class="main-hd-priority-user">Low</p>
+                </div>
+            </div>
+        </header>
+        <div class="project-task-list">
+            <div class="project-task">
+                <div class="project-task-left">
+                    <div class="checkbox"></div>
+                    <p class="project-task-desc">Studying</p>
+                </div>
+                <div class="project-task-btn">
+                    <span class="material-icons-outlined edit">edit</span>
+                    <span class="material-icons-outlined delete">delete</span>
+                </div>
+            </div>
+            <button class="add-task">
+                <span class="material-icons-outlined add-icon">add</span>
+                Add Task
+            </button>
+        </div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
