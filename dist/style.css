@@ -12,7 +12,238 @@ html, body {
     --main-ft: "Poppins";
     --accent-ft: "Lora";
     --main-clr: #2F3437;
-    --secondary-clr: #373C3F;
+    --project-clr: #373C3F;
     --font-clr: #EBEBEB;
-    --accent-clr: #0077b5;
+    --accent-clr: #FFB647;
+    --main-padding: 4rem 3rem;
+    --hd-padding: 1rem;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+/* ---------- LEFT CONTAINER ---------- */
+.left-con {
+    padding: var(--main-padding);
+    background-color: var(--project-clr);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* LEFT HEADER */
+.left-hd {
+    color: var(--font-clr);
+    font-family: var(--main-ft);
+    font-size: 1.2rem;
+    padding-bottom: var(--hd-padding);
+    border-bottom: 1px solid #ebebeb69;
+}
+
+/* PROJECT CONTAINER */
+.project-con {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.new-project-con {
+    font-family: var(--accent-ft);
+    color: var(--font-clr);
+    line-height: 3rem;
+    padding: 0 1rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-project-con:hover {
+    background-color: rgba(255, 255, 255, 0.296);
+}
+
+.project-title {
+    font-size: 1.2rem;
+    opacity: .5;
+}
+
+.project-btn {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.edit {
+    color: var(--accent-clr);
+    cursor: pointer;
+}
+
+.edit:hover {
+    color: #ff9900;
+}
+
+.delete {
+    color: rgb(252, 75, 75);
+    cursor: pointer;
+}
+
+.delete:hover {
+    color:rgb(246, 0, 0);
+}
+
+/* ADD PROJECT BUTTON */ 
+.add-project {
+    width: 40%;
+    background: none;
+    border: none;
+    color: var(--font-clr);
+    font-family: var(--accent-ft);
+    font-size: 1rem;
+    line-height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 15.5rem;
+}
+
+.add-project:hover {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.296);
+}
+
+.add-icon {
+    color: var(--accent-clr);
+}
+
+/* COMPLETED TAB */ 
+.completed-con {
+    color: var(--font-clr);
+    font-family: var(--accent-ft);
+}
+
+.completed-tab {
+    line-height: 3rem;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.completed-tab:hover {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.296);
+}
+
+.completed-list {
+    display: grid;
+    grid-auto-rows: 1fr;
+    row-gap: .5rem;
+}
+
+.completed-list p {
+    margin-left: 1rem;
+    padding: 0 1rem;
+    line-height: 3rem;
+}
+
+.completed-list:hover p {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.296);
+}
+
+/* ---------- RIGHT CONTAINER ---------- */
+.right-con {
+    background-color: var(--main-clr);
+    padding: 1.5rem 3rem; 
+
+}
+
+/* MAIN HEADER */
+.main-hd-con {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: var(--hd-padding);
+    border-bottom: 1px solid #ebebeb69;
+}
+
+.main-hd-left-con {
+    color: var(--font-clr);
+    font-family: var(--main-ft);
+    font-size: 1.2rem;
+}
+
+.main-hd-desc {
+    font-family: var(--accent-ft);
+}
+
+.main-hd-right-con {
+    font-family: var(--accent-ft);
+    color: var(--font-clr);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+/* PROJECT TASK */
+.project-task-list {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.project-task-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.checkbox {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    border: 2px solid #ebebeb69;
+}
+
+.project-task {
+    font-family: var(--accent-ft);
+    color: var(--font-clr);
+    font-size: 1.2rem;
+    border: 1px solid var(--font-clr);
+    border-radius: 5px;
+    line-height: 3rem;
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-task-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* ADD TASK BUTTON */
+.add-task {
+    width: 10%;
+    background: none;
+    border: none;
+    color: var(--font-clr);
+    font-family: var(--accent-ft);
+    font-size: 1rem;
+    line-height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 110rem;
+}
+
+.add-task:hover {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.296);
 }
