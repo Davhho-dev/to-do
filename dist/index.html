@@ -31,6 +31,38 @@
                 Add Project
             </button>
         </div>
+        <dialog class="project-modal">
+            <span class="material-icons-outlined close">close</span>
+            <form class="project-form" method="dialog">
+                <label for="title">Title: </label>
+                <input type="text" id="title" name="title" placeholder="Project Name" required>
+                <label for="description">Description: </label>
+                <input type="text" id="description" name="description" placeholder="Project Description" required>
+                <label for="due-date">Due Date: </label>
+                <input type="date" id="due-date" name="due-date" required>
+                <div class="priority-con">
+                    <p>Priority: </p>
+                    <div class="priority-radio-btn">
+                        <div class="low-con">
+                            <input type="radio" id="low" name="priority" value="low">
+                            <label for="low">Low</label>
+                        </div>
+                        <div class="medium-con">
+                            <input type="radio" id="medium" name="priority" value="medium">
+                            <label for="medium">Medium</label>
+                        </div>
+                        <div class="high-con">
+                            <input type="radio" id="high" name="priority" value="high">
+                            <label for="high">High</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-button-con">
+                    <input type="reset" value="Clear">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </dialog>
         <div class="completed-con">
             <div class="completed-tab">
                 Completed
@@ -62,6 +94,16 @@
             </div>
         </header>
         <div class="project-task-list">
+            <div class="project-task">
+                <div class="project-task-left">
+                    <div class="checkbox"></div>
+                    <p class="project-task-desc">Studying</p>
+                </div>
+                <div class="project-task-btn">
+                    <span class="material-icons-outlined edit">edit</span>
+                    <span class="material-icons-outlined delete">delete</span>
+                </div>
+            </div>
             <div class="project-task">
                 <div class="project-task-left">
                     <div class="checkbox"></div>
