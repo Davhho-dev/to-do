@@ -248,7 +248,8 @@ body {
 }
 
 /* ----------- PROJECT MODAL ---------- */
-.project-modal {
+.project-modal,
+.task-modal {
     left: 30%;
     top: 20%;
     width: 40%;
@@ -257,17 +258,20 @@ body {
     border-radius: 15px;
 }
 
-.project-modal::backdrop {
+.project-modal::backdrop,
+.task-modal::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.project-form {
+.project-form,
+.task-form {
     padding: 1rem 3rem;
     display: flex;
     flex-direction: column;
 }
 
-.close {
+.project-close,
+.task-close {
     margin: 1rem 1rem;
     display: flex !important;
     justify-content: end;
@@ -277,7 +281,8 @@ body {
 
 /* LABEL */
 .project-form > label,
-.priority-con > p {
+.priority-con > p,
+.task-form > label {
     font-family: var(--main-ft);
     color: var(--font-clr);
     font-size: 1.2rem;
