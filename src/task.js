@@ -1,3 +1,5 @@
+import { addToTaskList } from "./UI";
+
 let taskArr = [];
 
 function taskModal() {
@@ -24,10 +26,11 @@ function taskForm() {
             const projectIndex = taskArr.findIndex(task => task.project === title.textContent);
             taskArr[projectIndex].description.push(description.value); 
         }
+        addToTaskList(taskArr);
         taskModal.close();
         form.reset();
-        console.log(taskArr);
-        console.log(taskArr[0].description);
+        // console.log(taskArr);
+        // console.log(taskArr[0].description);
     })
 }
 
