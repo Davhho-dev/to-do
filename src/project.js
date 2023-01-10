@@ -29,6 +29,7 @@ function projectForm() {
         addToProjectList(projectArr);
         displayProject(newProject);
         projectModal.close();
+        form.reset();
         console.log(projectArr);
     });
 }
