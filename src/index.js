@@ -1,4 +1,4 @@
-import { projectModal } from "./project";
+import { projectModal, projectForm } from "./project";
 import { taskModal } from "./task";
 import { displayCompletedList, changeArrow } from "./UI";
 
@@ -7,10 +7,12 @@ addProjectBtn.addEventListener("click", () => {
     projectModal();
 });
 
+projectForm();
+
 const addTaskbtn = document.querySelector(".add-task");
 addTaskbtn.addEventListener("click", () => {
     taskModal();
-})
+});
 
 const completedTab = document.querySelector(".completed-tab");
 completedTab.addEventListener("click", (e) => {
