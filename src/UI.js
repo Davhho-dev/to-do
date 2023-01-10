@@ -36,7 +36,36 @@ function addToProjectList(arr) {
     return completedList;
 }
 
+function addToTaskList(arr) {
+    const taskList = document.querySelector(".project-task-list");
+    const projectTask = document.querySelectorAll(".project-task");
+    for(let i = 0; i < projectTask.length; i++) {
+        taskList.removeChild(document.querySelector(".project-task"));
+    }
+    arr.forEach(project => {
+        project.description.forEach(item => {
+            const projectTask = document.createElement("div");
+            projectTask.classList.add("project-task");
+            const projectTaskLeft = document.createElement("div");
+            projectTaskLeft.classList.add("project-task-left");
+            const checkBox = document.createElement("div");
+            checkBox.classList.add("checkbox");
+            const taskDescription = document.createElement("p");
+            taskDescription.classList.add("project-task-desc");
+            taskDescription.textContent = item;
+            projectTaskLeft.appendChild(checkBox);
+            projectTaskLeft.appendChild(taskDescription);
+            projectTask.appendChild(projectTaskLeft);
+            projectTask.appendChild(createProjectButtons());
+            const addTaskbtn = document.querySelector(".add-task");
+            taskList.insertBefore(projectTask, addTaskbtn);
+            return taskList;
+        });
+    });
+}
+
 function displayProject(projectObj) {
+    clearTaskList();
     const header = document.querySelector(".main-hd");
     header.textContent = projectObj.title;
     const description = document.querySelector(".main-hd-desc");
@@ -70,4 +99,13 @@ function createProjectButtons() {
     return projectBtn;
 }
 
-export {displayCompletedList, changeArrow, addToProjectList, displayProject};
+function clearTaskList() {
+    const taskList = document.querySelector(".project-task-list");
+    const projectTask = document.querySelectorAll(".project-task");
+    for(let i = 0; i < projectTask.length; i++) {
+        taskList.removeChild(document.querySelector(".project-task"));
+    }
+    return taskList;
+}
+
+export {displayCompletedList, changeArrow, addToProjectList, displayProject, addToTaskList};
