@@ -30,7 +30,7 @@ function projectForm() {
         displayProject(newProject);
         projectModal.close();
         form.reset();
-        console.log(projectArr);
+        // console.log(projectArr);
     });
 }
 
