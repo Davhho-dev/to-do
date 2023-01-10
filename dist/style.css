@@ -258,6 +258,10 @@ body {
     border-radius: 15px;
 }
 
+.task-modal {
+    height: 25% !important;
+}
+
 .project-modal::backdrop,
 .task-modal::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
