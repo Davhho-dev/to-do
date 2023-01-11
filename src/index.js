@@ -16,18 +16,18 @@ projectList.forEach((project) => {
         let projectTitle = "";
         if(e.target.classList.value === "project-title") {
             projectTitle = e.target.childNodes[0].textContent;
+            selectedProject(e.target);
         }else if(e.target.classList.value === "new-project-con") {
             projectTitle = e.target.childNodes[0].textContent;
-            console.log(projectTitle);
+            selectedProject(e.target.childNodes[0]);
         }else {
             projectTitle = e.target.parentElement.parentElement.childNodes[0].textContent;
+            selectedProject(e.target.parentElement.parentElement.childNodes[0]);
         }
-        // const projectTitle = e.target.childNodes[0].childNodes[0].textContent;
         const projectIndex = projectArr.findIndex(project => project.title === projectTitle);
         displayProject(projectArr[projectIndex]);
         const taskIndex = taskArr.findIndex(task => task.project === projectTitle);
         if(taskIndex !== -1) displayTask(taskArr[taskIndex].description);
-        // if(taskArr) displayTask(taskArr[taskIndex].description);
     })
 })
 

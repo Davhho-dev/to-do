@@ -36,40 +36,9 @@ function addToProjectList(arr) {
     return completedList;
 }
 
-function addToTaskList(arr) {
-    const taskList = document.querySelector(".project-task-list");
-    const projectTask = document.querySelectorAll(".project-task");
-    for(let i = 0; i < projectTask.length; i++) {
-        taskList.removeChild(document.querySelector(".project-task"));
-    }
-    arr.forEach(project => {
-        project.description.forEach(item => {
-            const projectTask = document.createElement("div");
-            projectTask.classList.add("project-task");
-            const projectTaskLeft = document.createElement("div");
-            projectTaskLeft.classList.add("project-task-left");
-            const checkBox = document.createElement("div");
-            checkBox.classList.add("checkbox");
-            const taskDescription = document.createElement("p");
-            taskDescription.classList.add("project-task-desc");
-            taskDescription.textContent = item;
-            projectTaskLeft.appendChild(checkBox);
-            projectTaskLeft.appendChild(taskDescription);
-            projectTask.appendChild(projectTaskLeft);
-            projectTask.appendChild(createProjectButtons());
-            const addTaskbtn = document.querySelector(".add-task");
-            taskList.insertBefore(projectTask, addTaskbtn);
-            return taskList;
-        });
-    });
-}
-
 function displayTask(arr) {
     const taskList = document.querySelector(".project-task-list");
-    const projectTask = document.querySelectorAll(".project-task");
-    for(let i = 0; i < projectTask.length; i++) {
-        taskList.removeChild(document.querySelector(".project-task"));
-    }
+    clearTaskList();
     arr.forEach(task => {
         const projectTask = document.createElement("div");
         projectTask.classList.add('project-task');
@@ -89,6 +58,10 @@ function displayTask(arr) {
     });
 }
 
+function selectedProject(project) {
+    return project.setAttribute("style", "color: white; opacity: 1;");
+}
+
 function displayProject(projectObj) {
     clearTaskList();
     const header = document.querySelector(".main-hd");
@@ -100,6 +73,17 @@ function displayProject(projectObj) {
     const priority = document.querySelector(".main-hd-priority-user");
     priority.textContent = projectObj.priority;
     priority.style.color = changePriorityColor(projectObj.priority);
+
+    //iterate through project title element that contains project title
+    for (const a of document.querySelectorAll(".project-title")) {
+        if(a.textContent.includes(projectObj.title)) {
+            a.setAttribute("style", "color: white; opacity: 1;");
+            a.parentElement.style.backgroundColor = "rgba(255, 255, 255, 0.296)";
+        }else {
+            a.setAttribute("style", "color: #EBEBEB; opacity: .5;");
+            a.parentElement.style.background = "none";
+        }
+    }
 }
 
 function changePriorityColor(priority) {
@@ -133,4 +117,4 @@ function clearTaskList() {
     return taskList;
 }
 
-export {displayCompletedList, changeArrow, addToProjectList, displayProject, displayTask};
+export {displayCompletedList, changeArrow, addToProjectList, displayProject, displayTask, selectedProject};
