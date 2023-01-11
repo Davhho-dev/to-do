@@ -1,6 +1,6 @@
 import { projectModal, projectForm, projectArr} from "./project";
 import { taskModal, taskForm, taskArr } from "./task";
-import { displayCompletedList, changeArrow, displayProject, displayTask} from "./UI";
+import { displayCompletedList, changeArrow, displayProject, displayTask, selectedProject} from "./UI";
 
 const addProjectBtn = document.querySelector(".add-project");
 addProjectBtn.addEventListener("click", () => {
@@ -13,7 +13,16 @@ taskForm();
 const projectList = document.querySelectorAll(".project-list");
 projectList.forEach((project) => {
     project.addEventListener("click", (e) => {
-        const projectTitle = e.target.childNodes[0].childNodes[0].textContent;
+        let projectTitle = "";
+        if(e.target.classList.value === "project-title") {
+            projectTitle = e.target.childNodes[0].textContent;
+        }else if(e.target.classList.value === "new-project-con") {
+            projectTitle = e.target.childNodes[0].textContent;
+            console.log(projectTitle);
+        }else {
+            projectTitle = e.target.parentElement.parentElement.childNodes[0].textContent;
+        }
+        // const projectTitle = e.target.childNodes[0].childNodes[0].textContent;
         const projectIndex = projectArr.findIndex(project => project.title === projectTitle);
         displayProject(projectArr[projectIndex]);
         const taskIndex = taskArr.findIndex(task => task.project === projectTitle);
