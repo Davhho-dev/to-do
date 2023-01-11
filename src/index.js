@@ -16,13 +16,10 @@ projectList.forEach((project) => {
         let projectTitle = "";
         if(e.target.classList.value === "project-title") {
             projectTitle = e.target.childNodes[0].textContent;
-            selectedProject(e.target);
         }else if(e.target.classList.value === "new-project-con") {
             projectTitle = e.target.childNodes[0].textContent;
-            selectedProject(e.target.childNodes[0]);
         }else {
             projectTitle = e.target.parentElement.parentElement.childNodes[0].textContent;
-            selectedProject(e.target.parentElement.parentElement.childNodes[0]);
         }
         const projectIndex = projectArr.findIndex(project => project.title === projectTitle);
         displayProject(projectArr[projectIndex]);

@@ -58,10 +58,6 @@ function displayTask(arr) {
     });
 }
 
-function selectedProject(project) {
-    return project.setAttribute("style", "color: white; opacity: 1;");
-}
-
 function displayProject(projectObj) {
     clearTaskList();
     const header = document.querySelector(".main-hd");
