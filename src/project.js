@@ -31,6 +31,7 @@ function projectForm() {
         projectModal.close();
         form.reset();
         // console.log(projectArr);
+        return projectArr;
     });
 }
 
@@ -39,4 +40,4 @@ const userProject = (title, description, dueDate, priority) => {
 } 
 
 
-export {projectModal, projectForm};
+export {projectModal, projectForm, projectArr};
