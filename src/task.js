@@ -1,4 +1,4 @@
-import { addToTaskList } from "./UI";
+import { addToTaskList, displayTask } from "./UI";
 
 let taskArr = [];
 
@@ -22,15 +22,19 @@ function taskForm() {
         if(!checkTaskArray(title.textContent)) {
             const newTask = userTask(title.textContent, [description.value]);
             taskArr.push(newTask);
+            const projectIndex = taskArr.findIndex(task => task.project === title.textContent);
+            displayTask(taskArr[projectIndex].description);
         }else {
             const projectIndex = taskArr.findIndex(task => task.project === title.textContent);
             taskArr[projectIndex].description.push(description.value); 
+            displayTask(taskArr[projectIndex].description);
         }
-        addToTaskList(taskArr);
+        // addToTaskList(taskArr);
         taskModal.close();
         form.reset();
         // console.log(taskArr);
         // console.log(taskArr[0].description);
+        return taskArr;
     })
 }
 
@@ -45,4 +49,4 @@ const userTask = (project, description) => {
     return {project, description};
 } 
 
-export {taskModal, taskForm};
+export {taskModal, taskForm, taskArr};
