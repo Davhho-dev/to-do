@@ -64,6 +64,31 @@ function addToTaskList(arr) {
     });
 }
 
+function displayTask(arr) {
+    const taskList = document.querySelector(".project-task-list");
+    const projectTask = document.querySelectorAll(".project-task");
+    for(let i = 0; i < projectTask.length; i++) {
+        taskList.removeChild(document.querySelector(".project-task"));
+    }
+    arr.forEach(task => {
+        const projectTask = document.createElement("div");
+        projectTask.classList.add('project-task');
+        const projectTaskLeft = document.createElement("div");
+        projectTaskLeft.classList.add("project-task-left");
+        const checkBox = document.createElement("div");
+        checkBox.classList.add('checkbox');
+        const taskDescription = document.createElement("p");
+        taskDescription.classList.add("project-task-desc");
+        taskDescription.textContent = task;
+        projectTaskLeft.appendChild(checkBox);
+        projectTaskLeft.appendChild(taskDescription);
+        projectTask.appendChild(projectTaskLeft);
+        projectTask.appendChild(createProjectButtons());
+        const addTaskBtn = document.querySelector(".add-task");
+        return taskList.insertBefore(projectTask, addTaskBtn);
+    });
+}
+
 function displayProject(projectObj) {
     clearTaskList();
     const header = document.querySelector(".main-hd");
@@ -108,4 +133,4 @@ function clearTaskList() {
     return taskList;
 }
 
-export {displayCompletedList, changeArrow, addToProjectList, displayProject, addToTaskList};
+export {displayCompletedList, changeArrow, addToProjectList, displayProject, displayTask};
