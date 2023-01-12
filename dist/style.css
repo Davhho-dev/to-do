@@ -249,7 +249,8 @@ body {
 
 /* ----------- PROJECT MODAL ---------- */
 .project-modal,
-.task-modal {
+.task-modal,
+.edit-modal {
     left: 30%;
     top: 20%;
     width: 40%;
@@ -263,19 +264,22 @@ body {
 }
 
 .project-modal::backdrop,
-.task-modal::backdrop {
+.task-modal::backdrop,
+.edit-modal::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
 .project-form,
-.task-form {
+.task-form,
+.edit-form {
     padding: 1rem 3rem;
     display: flex;
     flex-direction: column;
 }
 
 .project-close,
-.task-close {
+.task-close,
+.edit-close {
     margin: 1rem 1rem;
     display: flex !important;
     justify-content: end;
@@ -286,7 +290,8 @@ body {
 /* LABEL */
 .project-form > label,
 .priority-con > p,
-.task-form > label {
+.task-form > label,
+.edit-form > label {
     font-family: var(--main-ft);
     color: var(--font-clr);
     font-size: 1.2rem;
@@ -309,6 +314,16 @@ input {
 
 #due-date {
     width: 25%;
+}
+
+/* EDIT INPUTS */
+/* .edit-form > input:nth-child(2),
+.edit-form > input:nth-child(4) {
+    color: var(--accent-clr);
+} */
+
+.edit-form > input::placeholder {
+    color: var(--font-clr);
 }
 
 /* PRIORITY RADIO BUTTONS */

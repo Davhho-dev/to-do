@@ -113,4 +113,4 @@ function clearTaskList() {
     return taskList;
 }
 
-export {displayCompletedList, changeArrow, addToProjectList, displayProject, displayTask, selectedProject};
+export {displayCompletedList, changeArrow, addToProjectList, displayProject, displayTask};
