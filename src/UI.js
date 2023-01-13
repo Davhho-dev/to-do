@@ -1,3 +1,5 @@
+import { projectArr } from "./project";
+
 function displayCompletedList(innerText) {
     const completedList = document.querySelector(".completed-list");
     if(innerText === "Completed\nexpand_more" || innerText === "expand_more") {
@@ -82,6 +84,25 @@ function displayProject(projectObj) {
     }
 }
 
+function removeProject() {
+    if(projectArr.length === 0) {
+        const headerContainer = document.querySelector(".main-hd-con");
+        headerContainer.textContent = "";
+        headerContainer.style.paddingBottom = "6.15rem";
+        return headerContainer;
+    }else {
+        const header = document.querySelector(".main-hd");
+        header.textContent = projectArr[0].title;
+        const description = document.querySelector(".main-hd-desc");
+        description.textContent = projectArr[0].description;
+        const date = document.querySelector(".main-hd-date-user");
+        date.textContent = projectArr[0].dueDate;
+        const priority = document.querySelector(".main-hd-priority-user");
+        priority.textContent = projectArr[0].priority;
+        priority.style.color = changePriorityColor(projectArr[0].priority);
+    }
+}
+
 function changePriorityColor(priority) {
     if(priority === "Low") return "green";
     else if(priority === "Medium") return "yellow";
@@ -113,4 +134,4 @@ function clearTaskList() {
     return taskList;
 }
 
-export {displayCompletedList, changeArrow, addToProjectList, displayProject, displayTask};
+export {displayCompletedList, changeArrow, addToProjectList, displayProject, displayTask, removeProject};

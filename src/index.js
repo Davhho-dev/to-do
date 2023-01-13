@@ -1,6 +1,6 @@
-import { projectModal, projectForm, projectArr, editModal, editForm} from "./project";
+import { projectModal, projectForm, projectArr, editModal, editForm, deleteProject} from "./project";
 import { taskModal, taskForm, taskArr } from "./task";
-import { displayCompletedList, changeArrow, displayProject, displayTask} from "./UI";
+import { displayCompletedList, changeArrow, displayProject, displayTask, removeProject} from "./UI";
 
 const addProjectBtn = document.querySelector(".add-project");
 addProjectBtn.addEventListener("click", () => {
@@ -9,8 +9,6 @@ addProjectBtn.addEventListener("click", () => {
 
 projectForm();
 taskForm();
-
-//have edit form function and placed next to these two functions above (projectForm and task form). The edit form should be the same as project form. Maybe create a new edit object that references the old object and then we can update the UI based upon that edit object. For some reason, editing the new array is causing problems.
 
 const projectList = document.querySelectorAll(".project-list");
 projectList.forEach((project) => {
@@ -28,14 +26,6 @@ projectList.forEach((project) => {
         displayProject(projectArr[projectIndex]);
         const taskIndex = taskArr.findIndex(task => task.project === projectTitle);
         if(taskIndex !== -1) displayTask(taskArr[taskIndex].description);
-
-        // if(e.target.classList.value === "material-icons-outlined edit") {
-        //     editProjectModal(projectIndex);
-            
-        //     editProject(projectIndex);
-        //     // displayProject(projectArr[projectIndex]);
-        // }
-        // console.log(e.target.classList.value);
     })
 })
 
@@ -47,13 +37,20 @@ projectBtn.forEach(btn => {
             const projectIndex = projectArr.findIndex(project => project.title === title);
             editModal();
             editForm(projectIndex);
-            console.log("index module");
-            console.log(projectArr);
-            console.log(projectArr[projectIndex]);
+            // console.log("index module");
+            // console.log(projectArr);
+            // console.log(projectArr[projectIndex]);
+        }
+        if(e.target.classList.value === "material-icons-outlined delete") {
+            const title = e.target.parentElement.parentElement.childNodes[0].textContent;
+            const projectIndex = projectArr.findIndex(project => project.title === title);
+            deleteProject(projectIndex);
+            const projectList = document.querySelector(".project-list");
+            projectList.removeChild(e.target.parentElement.parentElement);
+            removeProject(projectArr);
         }
     })
 })
-
 
 const addTaskbtn = document.querySelector(".add-task");
 addTaskbtn.addEventListener("click", () => {

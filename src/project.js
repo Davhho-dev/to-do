@@ -71,62 +71,13 @@ function editForm(projectIndex) {
     }, {once: true}); //prevent form from submitting twice when editing more than once
 }
 
-// function editProjectModal(index) {
-//     const projectModal = document.querySelector(".edit-modal");
-//     const title = document.getElementById("edit-title");
-//     title.placeholder = projectArr[index].title;
-//     title.value = projectArr[index].title;
-//     console.log(title.value);
-//     const description = document.getElementById("edit-description");
-//     description.placeholder = projectArr[index].description;
-//     description.value = projectArr[index].description;
-//     const dueDate = document.getElementById("edit-due-date");
-//     dueDate.setAttribute("value", projectArr[index].dueDate);
-//     dueDate.value = projectArr[index].dueDate;
-//     if(projectArr[index].priority === "Low") {
-//         const low = document.querySelector(".edit-modal #low");
-//         low.checked = true;
-//     }else if(projectArr[index].priority === "Medium") {
-//         const medium = document.querySelector(".edit-modal #medium");
-//         medium.checked = true;
-//     }else {
-//         const high = document.querySelector(".edit-modal #high");
-//         high.checked = true;
-//     }
-//     projectModal.showModal();
-//     const closeBtn = document.querySelector(".edit-close");
-//     closeBtn.addEventListener("click", () => {
-//         projectModal.close();
-//     });
-//     return projectModal;
-// }
-
-// function editProject(index) {
-//     const form = document.querySelector(".edit-form");
-//     const projectModal = document.querySelector(".edit-modal");
-//     form.addEventListener("submit", (e) => {
-//         const title = document.getElementById("edit-title");
-//         projectArr[index].title = title.value;
-//         const description = document.getElementById("edit-description");
-//         projectArr[index].description = description.value;
-//         const dueDate = document.getElementById("edit-due-date");
-//         projectArr[index].dueDate = dueDate.value;
-//         let priority = "Low";
-//         if(document.querySelector(".edit-modal #medium").checked) projectArr[index].priority = "Medium";
-//         else if(document.querySelector(".edit-modal #high").checked) projectArr[index].priority = "High";
-//         else projectArr[index].priority = priority;
-//         // addToProjectList(projectArr);
-//         // displayProject(projectArr[index]);
-//         projectModal.close();
-//         form.reset();
-//         // console.log(projectArr);
-//         return projectArr;
-//     });
-// }
+function deleteProject(projectIndex) {
+    return projectArr.splice(projectIndex, 1);
+}
 
 const userProject = (title, description, dueDate, priority) => {
     return {title, description, dueDate, priority};
 } 
 
 
-export {projectModal, projectForm, projectArr, editModal, editForm};
+export {projectModal, projectForm, projectArr, editModal, editForm, deleteProject};
