@@ -80,8 +80,20 @@ function checkTaskArray(title) {
     }
 }
 
+function strikeThrough(checkbox, el) {
+    if(!checkbox.classList.contains("active")) {
+        checkbox.style.backgroundColor = "#FFB647";
+        el.style.textDecoration = "line-through";
+        checkbox.classList.add("active");
+    }else {
+        checkbox.style.background = "none";
+        el.style.textDecoration = "none";
+        checkbox.classList.remove("active");
+    }
+}
+
 const userTask = (project, description) => {
     return {project, description};
 } 
 
-export {taskModal, taskForm, taskArr, updateTask, editTaskModal, editTaskForm, deleteTask};
+export {taskModal, taskForm, taskArr, updateTask, editTaskModal, editTaskForm, deleteTask, strikeThrough};

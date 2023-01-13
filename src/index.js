@@ -1,5 +1,5 @@
 import { projectModal, projectForm, projectArr, editModal, editForm, deleteProject} from "./project";
-import { taskModal, taskForm, taskArr, updateTask, editTaskModal, editTaskForm, deleteTask } from "./task";
+import { taskModal, taskForm, taskArr, updateTask, editTaskModal, editTaskForm, deleteTask, strikeThrough } from "./task";
 import { displayCompletedList, changeArrow, displayProject, displayTask, removeProject} from "./UI";
 
 const addProjectBtn = document.querySelector(".add-project");
@@ -74,6 +74,11 @@ taskBtn.forEach(task => {
             deleteTask(taskIndex, descIndex);
             const projectTaskList = document.querySelector(".project-task-list");
             projectTaskList.removeChild(e.target.parentElement.parentElement);
+        }
+        if(e.target.classList.value === "checkbox" || e.target.classList.value === "checkbox active") {
+            const desc = e.target.parentElement.childNodes[1];
+            const checkbox = e.target;
+            strikeThrough(checkbox, desc);
         }
     })
 })
