@@ -38,6 +38,34 @@ function taskForm() {
     })
 }
 
+function editTaskModal() {
+    const taskModal = document.querySelector(".edit-task-modal");
+    taskModal.showModal();
+    const closeBtn = document.querySelector(".edit-task-close");
+    closeBtn.addEventListener("click", (e) => {
+        taskModal.close();
+    });
+    return taskModal;
+}
+
+function editTaskForm(taskIndex, taskDesc) {
+    const form = document.querySelector(".edit-task-form");
+    const taskModal = document.querySelector(".edit-task-modal");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const description = document.getElementById("edit-task-description");
+        taskArr[taskIndex].description[taskDesc] = description.value;
+        displayTask(taskArr[taskIndex].description);
+        taskModal.close();
+        form.reset();
+        return taskArr;
+    }, {once: true});
+}
+
+function deleteTask(taskIndex, descIndex) {
+    return taskArr[taskIndex].description.splice(descIndex, 1);
+}
+
 function updateTask(index, newTitle) {
     taskArr[index].project = newTitle;
     displayTask(taskArr[index].description);
@@ -56,4 +84,4 @@ const userTask = (project, description) => {
     return {project, description};
 } 
 
-export {taskModal, taskForm, taskArr, updateTask};
+export {taskModal, taskForm, taskArr, updateTask, editTaskModal, editTaskForm, deleteTask};

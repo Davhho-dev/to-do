@@ -100,6 +100,9 @@ function removeProject() {
         const priority = document.querySelector(".main-hd-priority-user");
         priority.textContent = projectArr[0].priority;
         priority.style.color = changePriorityColor(projectArr[0].priority);
+        const selected = document.querySelector(".project-title");
+        selected.setAttribute("style", "color: white; opacity: 1;");
+        selected.parentElement.style.backgroundColor = "rgba(255, 255, 255, 0.296)";
     }
 }
 

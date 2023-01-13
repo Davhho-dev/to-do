@@ -156,25 +156,17 @@
             <form class="task-form" method="dialog">
                 <label for="task-description">Description: </label>
                 <input type="text" id="task-description" name="task-description" placeholder="Task Description" required>
-                <!-- <label for="due-date">Due Date: </label>
-                <input type="date" id="due-date" name="due-date" required>
-                <div class="priority-con">
-                    <p>Priority: </p>
-                    <div class="priority-radio-btn">
-                        <div class="low-con">
-                            <input type="radio" id="low" name="priority" value="low">
-                            <label for="low">Low</label>
-                        </div>
-                        <div class="medium-con">
-                            <input type="radio" id="medium" name="priority" value="medium">
-                            <label for="medium">Medium</label>
-                        </div>
-                        <div class="high-con">
-                            <input type="radio" id="high" name="priority" value="high">
-                            <label for="high">High</label>
-                        </div>
-                    </div>
-                </div> -->
+                <div class="form-button-con">
+                    <input type="reset" value="Clear">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </dialog>
+        <dialog class="edit-task-modal">
+            <span class="material-icons-outlined edit-task-close">close</span>
+            <form class="edit-task-form" method="dialog">
+                <label for="edit-task-description">Description: </label>
+                <input type="text" id="edit-task-description" name="edit-task-description" placeholder="Task Description" required>
                 <div class="form-button-con">
                     <input type="reset" value="Clear">
                     <input type="submit" value="Submit">

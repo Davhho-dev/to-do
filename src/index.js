@@ -1,5 +1,5 @@
 import { projectModal, projectForm, projectArr, editModal, editForm, deleteProject} from "./project";
-import { taskModal, taskForm, taskArr, updateTask } from "./task";
+import { taskModal, taskForm, taskArr, updateTask, editTaskModal, editTaskForm, deleteTask } from "./task";
 import { displayCompletedList, changeArrow, displayProject, displayTask, removeProject} from "./UI";
 
 const addProjectBtn = document.querySelector(".add-project");
@@ -50,6 +50,30 @@ projectBtn.forEach(btn => {
             const projectList = document.querySelector(".project-list");
             projectList.removeChild(e.target.parentElement.parentElement);
             removeProject(projectArr);
+        }
+    })
+})
+
+const taskBtn = document.querySelectorAll(".project-task-list");
+taskBtn.forEach(task => {
+    task.addEventListener("click", (e) => {
+        if(e.target.classList.value === "material-icons-outlined edit") {
+            const taskDesc = e.target.parentElement.parentElement.childNodes[0].childNodes[1].textContent;
+            const header = document.querySelector(".main-hd").textContent;
+            const taskIndex = taskArr.findIndex(task => task.project === header);
+            const descIndex = taskArr[taskIndex].description.findIndex(desc => desc === taskDesc);
+            console.log(descIndex);
+            editTaskModal();
+            editTaskForm(taskIndex, descIndex);
+        }
+        if(e.target.classList.value === "material-icons-outlined delete") {
+            const taskDesc = e.target.parentElement.parentElement.childNodes[0].childNodes[1].textContent;
+            const header = document.querySelector(".main-hd").textContent;
+            const taskIndex = taskArr.findIndex(task => task.project === header);
+            const descIndex = taskArr[taskIndex].description.findIndex(desc => desc === taskDesc);
+            deleteTask(taskIndex, descIndex);
+            const projectTaskList = document.querySelector(".project-task-list");
+            projectTaskList.removeChild(e.target.parentElement.parentElement);
         }
     })
 })
