@@ -1,5 +1,5 @@
 import { projectModal, projectForm, projectArr, editModal, editForm, deleteProject} from "./project";
-import { taskModal, taskForm, taskArr } from "./task";
+import { taskModal, taskForm, taskArr, updateTask } from "./task";
 import { displayCompletedList, changeArrow, displayProject, displayTask, removeProject} from "./UI";
 
 const addProjectBtn = document.querySelector(".add-project");
@@ -35,8 +35,10 @@ projectBtn.forEach(btn => {
         if(e.target.classList.value === "material-icons-outlined edit") {
             const title = e.target.parentElement.parentElement.childNodes[0].textContent;
             const projectIndex = projectArr.findIndex(project => project.title === title);
+            const taskIndex = taskArr.findIndex(task => task.project === title);
             editModal();
             editForm(projectIndex);
+            // updateTask(taskIndex, title);
             // console.log("index module");
             // console.log(projectArr);
             // console.log(projectArr[projectIndex]);

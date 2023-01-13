@@ -38,6 +38,13 @@ function taskForm() {
     })
 }
 
+function updateTask(index, newTitle) {
+    taskArr[index].project = newTitle;
+    displayTask(taskArr[index].description);
+    console.log(taskArr[index]);
+    return taskArr;
+}
+
 function checkTaskArray(title) {
     if(taskArr.length === 0) return false;
     for(let x = 0; x < taskArr.length; x++) {
@@ -49,4 +56,4 @@ const userTask = (project, description) => {
     return {project, description};
 } 
 
-export {taskModal, taskForm, taskArr};
+export {taskModal, taskForm, taskArr, updateTask};

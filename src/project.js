@@ -1,4 +1,5 @@
 import { addToProjectList, displayProject } from "./UI";
+import { updateTask } from "./task";
 
 let projectArr = [];
 
@@ -65,6 +66,7 @@ function editForm(projectIndex) {
         console.log(projectArr);
         addToProjectList(projectArr);
         displayProject(projectArr[projectIndex]);
+        updateTask(projectIndex, projectArr[projectIndex].title);
         projectModal.close();
         form.reset();
         return projectArr;
