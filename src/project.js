@@ -106,7 +106,7 @@ function projectForm() {
         displayMain(newProject);
         projectModal.close();
         HTMLFormElement.prototype.reset.call(form);
-    });
+    }, {once: true});
 }
 
 const userProject = (title, desc, dueDate, priority) => {
