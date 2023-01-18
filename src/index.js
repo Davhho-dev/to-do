@@ -102,7 +102,7 @@
 
 import { displayProjectModal, displayEditProjectModal, displayTaskModal, displayEditTaskModal} from "./UI";
 import { deleteProject, selectedProject } from "./project";
-import { selectedTask, deleteTask } from "./task";
+import { selectedTask, deleteEntireTask, deleteTask } from "./task";
 
 const addProjectBtn = document.querySelector(".add-project");
 addProjectBtn.addEventListener("click", () => {
@@ -117,7 +117,7 @@ editProjectBtn.addEventListener("click", (e) => {
     }else if(e.target.className === "material-icons-outlined delete") {
         const projectTitle = e.target.parentElement.parentElement.childNodes[0].textContent;
         deleteProject(projectTitle);
-        deleteTask(projectTitle);
+        deleteEntireTask(projectTitle);
     }else {
         if(e.target.className === "project-title") {
             const projectTitle = e.target.className;
@@ -141,5 +141,9 @@ taskList.addEventListener("click", (e) => {
         const taskTitle = e.target.parentElement.parentElement.childNodes[0].textContent;
         const projectTitle = document.querySelector(".main-hd").textContent;
         displayEditTaskModal(projectTitle, taskTitle);
+    }else if(e.target.className === "material-icons-outlined delete") {
+        const taskTitle = e.target.parentElement.parentElement.childNodes[0].textContent;
+        const projectTitle = document.querySelector(".main-hd").textContent;
+        deleteTask(projectTitle, taskTitle);
     }
 })

@@ -144,8 +144,14 @@ function editTaskForm(projectTitle, taskTitle) {
     }, {once: true});
 }
 
+function deleteTask(projectTitle, taskTitle) {
+    const index = findIndex(taskArr, projectTitle);
+    const taskIndex = findTaskIndex(taskArr[index].desc, taskTitle);
+    taskArr[index].desc.splice(taskIndex, 1);
+    displayTask(taskArr[index].desc);
+}
 
-function deleteTask(projectTitle) {
+function deleteEntireTask(projectTitle) {
     const index = findIndex(taskArr, projectTitle);
     taskArr.splice(index, 1);
     displayTask(taskArr[index]);
@@ -176,4 +182,4 @@ function taskTitleMatch(title) {
     return false;
 }
 
-export {taskForm, selectedTask, deleteTask, editTaskForm};
+export {taskForm, selectedTask, deleteEntireTask, editTaskForm, deleteTask};
