@@ -97,3 +97,52 @@
 // } 
 
 // export {taskModal, taskForm, taskArr, updateTask, editTaskModal, editTaskForm, deleteTask, strikeThrough};
+
+import { displayTask } from "./UI";
+
+let taskArr = [];
+
+const userTask = (title, desc) => {
+    return {title, desc};
+}
+
+function taskForm() {
+    const taskModal = document.querySelector(".task-modal");
+    const form = document.querySelector(".task-form");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const title = document.querySelector(".main-hd");
+        const description = document.getElementById("task-description");
+        if(!taskTitleMatch(title.textContent)) {
+            const newTask = userTask(title.textContent, [description.value]);
+            taskArr.push(newTask);
+        }else {
+            const index = findIndex(taskArr);
+            taskArr[index].desc.push(description.value);
+        }
+        const index = findIndex(taskArr);
+        displayTask(taskArr[index].desc);
+        taskModal.close();
+        HTMLFormElement.prototype.reset.call(form)
+    }, {once: true});
+}
+
+function selectedTask() {
+    const index = findIndex(taskArr);
+    if(index != -1) displayTask(taskArr[index].desc);
+}
+
+function findIndex(arr) {
+    const title = document.querySelector(".main-hd");
+    return arr.findIndex(task => task.title === title.textContent);
+}
+
+function taskTitleMatch(title) {
+    if(taskArr.length === 0) return false;
+    for(let i = 0; i < taskArr.length; i++) {
+        if(taskArr[i].title === title) return true;
+    }
+    return false;
+}
+
+export {taskForm, selectedTask};

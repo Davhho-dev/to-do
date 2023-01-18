@@ -84,9 +84,13 @@
 
 // export {projectModal, projectForm, projectArr, editModal, editForm, deleteProject};
 
-import { displayProject, displayMain } from "./UI";
+import { displayProject, displayMain, displayDeleteMain } from "./UI";
 
 let projectArr = [];
+
+const userProject = (title, desc, dueDate, priority) => {
+    return {title, desc, dueDate, priority};
+}
 
 function projectForm() {
     const projectModal = document.querySelector(".project-modal");
@@ -109,8 +113,47 @@ function projectForm() {
     }, {once: true});
 }
 
-const userProject = (title, desc, dueDate, priority) => {
-    return {title, desc, dueDate, priority};
+function editProjectForm(projectTitle) {
+    const editModal = document.querySelector(".edit-modal");
+    const editForm = document.querySelector(".edit-form");
+    editForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const title = document.getElementById("edit-title");
+        const description = document.getElementById("edit-description");
+        const dueDate = document.getElementById("edit-due-date");
+        let priority = "Low";
+        if(document.querySelector(".edit-form #medium").checked) priority = "Medium";
+        else if(document.querySelector(".edit-form #high").checked) priority = "High";
+        else priority;
+        const index = findProject(projectTitle);
+        projectArr[index].title = title.value;
+        projectArr[index].desc = description.value;
+        projectArr[index].dueDate = dueDate.value;
+        projectArr[index].priority = priority;
+        displayProject(projectArr);
+        displayMain(projectArr[index]);
+        editModal.close();
+        console.log(projectArr);
+        HTMLFormElement.prototype.reset.call(editForm)
+    }, {once: true});
 }
 
-export {projectForm};
+function deleteProject(projectTitle) {
+    const index = findProject(projectTitle);
+    projectArr.splice(index, 1);
+    console.log(projectArr);
+    displayProject(projectArr);
+    displayDeleteMain(projectArr);
+}
+
+function selectedProject(projectTitle) {
+    const index = findProject(projectTitle);
+    displayMain(projectArr[index]);
+}
+
+function findProject(projectTitle) {
+    return projectArr.findIndex(project => project.title === projectTitle);
+}
+
+
+export {projectForm, editProjectForm, deleteProject, selectedProject};
