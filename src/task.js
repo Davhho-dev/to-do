@@ -127,14 +127,22 @@ function taskForm() {
     }, {once: true});
 }
 
+function deleteTask(projectTitle) {
+    const index = findIndex(taskArr, projectTitle);
+    taskArr.splice(index, 1);
+    displayTask(taskArr[index]);
+    if(taskArr.length !== 0) displayTask(taskArr[0].desc);
+}
+
 function selectedTask() {
     const index = findIndex(taskArr);
     if(index != -1) displayTask(taskArr[index].desc);
 }
 
-function findIndex(arr) {
+function findIndex(arr, projectTitle) {
     const title = document.querySelector(".main-hd");
-    return arr.findIndex(task => task.title === title.textContent);
+    if(typeof projectTitle === "undefined") return arr.findIndex(task => task.title === title.textContent);
+    else return arr.findIndex(task => task.title === projectTitle);
 }
 
 function taskTitleMatch(title) {
@@ -145,4 +153,4 @@ function taskTitleMatch(title) {
     return false;
 }
 
-export {taskForm, selectedTask};
+export {taskForm, selectedTask, deleteTask};

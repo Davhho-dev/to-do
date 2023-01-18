@@ -172,6 +172,8 @@ function displayEditProjectModal(projectTitle) {
 
 /* displaying project list on left side of screen */
 function displayProject(arr) {
+    const headerContainer = document.querySelector(".main-hd-con");
+    headerContainer.style.paddingBottom = "1rem";
     const projectList = document.querySelector(".project-list");
     projectList.textContent = "";
     for(let project = 0; project < arr.length; project++) {
@@ -224,10 +226,14 @@ function displayTaskModal() {
 
 function displayTask(arr) {
     const taskList = document.querySelector(".project-task-list");
-    taskList.textContent = "";
-    for(let i = 0; i < arr.length; i++) {
-        console.log(arr[i]);
-        taskList.appendChild(createTaskEl(arr[i]));
+    if(typeof arr === "undefined") {
+        taskList.textContent = "";
+    }else {
+        taskList.textContent = "";
+        for(let i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+            taskList.appendChild(createTaskEl(arr[i]));
+        }
     }
     taskList.appendChild(createAddTaskBtn());
 }

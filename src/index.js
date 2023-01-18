@@ -102,7 +102,7 @@
 
 import { displayProjectModal, displayEditProjectModal, displayTaskModal} from "./UI";
 import { deleteProject, selectedProject } from "./project";
-import { selectedTask } from "./task";
+import { selectedTask, deleteTask } from "./task";
 
 const addProjectBtn = document.querySelector(".add-project");
 addProjectBtn.addEventListener("click", () => {
@@ -117,6 +117,7 @@ editProjectBtn.addEventListener("click", (e) => {
     }else if(e.target.className === "material-icons-outlined delete") {
         const projectTitle = e.target.parentElement.parentElement.childNodes[0].textContent;
         deleteProject(projectTitle);
+        deleteTask(projectTitle);
     }else {
         if(e.target.className === "project-title") {
             const projectTitle = e.target.className;
