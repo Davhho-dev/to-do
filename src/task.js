@@ -127,6 +127,24 @@ function taskForm() {
     }, {once: true});
 }
 
+function editTaskForm(projectTitle, taskTitle) {
+    const editTaskModal = document.querySelector(".edit-task-modal");
+    const form = document.querySelector(".edit-task-form");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const title = document.querySelector(".main-hd");
+        const description = document.getElementById("edit-task-description");
+        const index = findIndex(taskArr, projectTitle);
+        const taskIndex = findTaskIndex(taskArr[index].desc, taskTitle);
+        console.log(taskIndex);
+        taskArr[index].desc[taskIndex] = description.value;
+        displayTask(taskArr[index].desc);
+        editTaskModal.close();
+        HTMLFormElement.prototype.reset.call(form)
+    }, {once: true});
+}
+
+
 function deleteTask(projectTitle) {
     const index = findIndex(taskArr, projectTitle);
     taskArr.splice(index, 1);
@@ -145,6 +163,11 @@ function findIndex(arr, projectTitle) {
     else return arr.findIndex(task => task.title === projectTitle);
 }
 
+function findTaskIndex(arr, taskTitle) {
+    const title = document.querySelector(".main-hd");
+    return arr.findIndex(index => index === taskTitle);
+}
+
 function taskTitleMatch(title) {
     if(taskArr.length === 0) return false;
     for(let i = 0; i < taskArr.length; i++) {
@@ -153,4 +176,4 @@ function taskTitleMatch(title) {
     return false;
 }
 
-export {taskForm, selectedTask, deleteTask};
+export {taskForm, selectedTask, deleteTask, editTaskForm};

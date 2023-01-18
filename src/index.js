@@ -100,7 +100,7 @@
 //     }
 // });
 
-import { displayProjectModal, displayEditProjectModal, displayTaskModal} from "./UI";
+import { displayProjectModal, displayEditProjectModal, displayTaskModal, displayEditTaskModal} from "./UI";
 import { deleteProject, selectedProject } from "./project";
 import { selectedTask, deleteTask } from "./task";
 
@@ -137,5 +137,9 @@ const taskList = document.querySelector(".project-task-list");
 taskList.addEventListener("click", (e) => {
     if(e.target.className === "add-task") {
         displayTaskModal();
+    }else if(e.target.className === "material-icons-outlined edit") {
+        const taskTitle = e.target.parentElement.parentElement.childNodes[0].textContent;
+        const projectTitle = document.querySelector(".main-hd").textContent;
+        displayEditTaskModal(projectTitle, taskTitle);
     }
 })

@@ -141,7 +141,7 @@
 
 
 import { projectForm, editProjectForm} from "./project";
-import { taskForm } from "./task";
+import { taskForm, editTaskForm } from "./task";
 
 
 function displayProjectModal() {
@@ -220,8 +220,21 @@ function displayTaskModal() {
     const closeBtn = document.querySelector(".task-close");
     closeBtn.addEventListener("click", () => {
         taskModal.close();
-        HTMLFormElement.prototype.reset.call(form)
+        HTMLFormElement.prototype.reset.call(form);
     });
+}
+
+function displayEditTaskModal(projectTitle,taskTitle) {
+    const form = document.querySelector(".edit-task-form");
+    const editTaskModal = document.querySelector(".edit-task-modal");
+    editTaskModal.showModal();
+    editTaskForm(projectTitle, taskTitle);
+
+    const closeBtn = document.querySelector(".edit-task-close");
+    closeBtn.addEventListener("click", () => {
+        editTaskModal.close();
+        HTMLFormElement.prototype.reset.call(form);
+    })
 }
 
 function displayTask(arr) {
@@ -341,4 +354,4 @@ function priorityColor(level) {
     else return "red";
 }
 
-export {displayProject, displayProjectModal, displayEditProjectModal, displayMain, displayDeleteMain, displayTaskModal, displayTask};
+export {displayProject, displayProjectModal, displayEditProjectModal, displayMain, displayDeleteMain, displayTaskModal, displayTask, displayEditTaskModal};
